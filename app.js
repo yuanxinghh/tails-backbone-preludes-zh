@@ -23,3 +23,25 @@ dialog.addEventListener('close',()=>opener?.focus());
 document.querySelector('#copy-email').addEventListener('click',async()=>{const email=document.querySelector('#feedback-email');try{await navigator.clipboard.writeText(email.value);document.querySelector('#copy-email').textContent='已复制';document.querySelector('#copy-status').textContent='邮箱已复制，可以粘贴到邮件客户端。';}catch{email.focus();email.select();document.querySelector('#copy-status').textContent='请复制已选中的邮箱地址。';}});
 const menuToggle=document.querySelector('.menu-toggle'),menu=document.querySelector('#mobile-menu');menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')!=='true';menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'收起导航':'展开导航');menu.hidden=!open;});menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu.hidden=true;menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','展开导航');}));
 fetch('downloads/release.json?v=2026.11.27-icon3',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(r=>{document.querySelector('#download-size').textContent=(r.bytes/1000000).toFixed(1)+' MB';}).catch(()=>{});
+
+// The total is stored in the shared cloud database; every press is accepted.
+(()=>{
+ const button=document.querySelector('#love-button'),output=document.querySelector('#love-count'),status=document.querySelector('#love-status');
+ if(!button||!output)return;
+ const endpoint='https://dorr-hearts-counter.snowfox-8392.chatgpt.site/api/hearts';
+ let total=-1,pending=0;
+ function show(value){if(!Number.isSafeInteger(value)||value<0)throw Error('Invalid count');total=Math.max(total,value);output.value=new Intl.NumberFormat('zh-CN').format(total);}
+ async function request(method){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);try{const r=await fetch(endpoint,{method,mode:'cors',cache:'no-store',credentials:'omit',signal:controller.signal,...(method==='POST'?{headers:{'Content-Type':'application/json'},body:'{}'}:{})});if(!r.ok)throw Error('Count unavailable');const data=await r.json();show(data.count);return data.count;}finally{clearTimeout(timer);}}
+ const refresh=()=>request('GET').catch(()=>{});
+ refresh();
+ button.addEventListener('click',async()=>{
+  button.classList.remove('heart-pop');void button.offsetWidth;button.classList.add('heart-pop');
+  status.textContent='';pending++;button.setAttribute('aria-busy','true');
+  try{try{await request('POST');}catch{await request('POST');}status.textContent='爱心已送达 ♡';}
+  catch{status.textContent='暂时没连上，请再点一次。';}
+  finally{pending--;if(!pending)button.removeAttribute('aria-busy');}
+ });
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+ window.addEventListener('focus',refresh);
+ setInterval(()=>{if(!document.hidden)refresh();},30000);
+})();

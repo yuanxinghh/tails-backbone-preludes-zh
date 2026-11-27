@@ -106,3 +106,17 @@ h1 .hero-first-line{color:inherit;white-space:nowrap}h1 strong{font-weight:inher
 html{scroll-padding-top:126px}
 #mobile-menu{max-height:calc(100dvh - 108px);overflow-y:auto}
 @media(max-width:800px){html{scroll-padding-top:104px}}
+
+/* Shared cloud hearts alongside the download. */
+.download-actions{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.download-actions>.button-wide{width:auto;flex:1 1 280px;gap:12px}
+.love-button{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;flex:0 0 auto;min-height:54px;padding:10px 14px;border:1px solid #eea4c0;border-radius:3px;background:#ffdaea;color:#8c2453;font:700 14px var(--font);cursor:pointer;transition:background .18s,transform .18s,box-shadow .18s}
+.love-button:hover{background:#ffc4dd;box-shadow:0 3px 12px #df56852b}.love-button:active{transform:scale(.96)}
+.love-button svg{width:24px;height:24px;fill:#e34e88;flex:none}
+.love-button small{display:block;margin-top:3px;font-size:12px;font-weight:500;color:#a6416c}
+.love-button:focus-visible{outline:3px solid #e34e88;outline-offset:3px}
+.love-button.heart-pop svg{animation:heart-pop .4s ease-out}
+.love-status{margin:8px 0 0;font-size:14px;color:#a6416c}.love-status:empty{display:none}
+@keyframes heart-pop{0%,100%{transform:scale(1)}40%{transform:scale(1.3) rotate(-8deg)}70%{transform:scale(.94)}}
+@media(max-width:800px){.download-actions{gap:10px}.download-actions>.button-wide{flex-basis:100%}.love-button{margin-left:auto;min-height:49px}}
+@media(prefers-reduced-motion:reduce){.love-button,.love-button svg{transition:none;animation:none!important}}
