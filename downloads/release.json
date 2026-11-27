@@ -1,10 +1,14 @@
 {
   "version": "2026.11.27",
-  "filename": "tails-preludes-zh-full-2026.11.27.zip",
-  "bytes": 14413658,
-  "size_mb": 14.4,
-  "sha256": "2c57d7a0e6c72e39ebb3c8b01d1241fcea290375fe8c83671f20252e80877ff0",
-  "installer_sha256": "e6b73eabdae3a9d069f8106acf9f57177d3cf4cbe456e4b551da57efae593592",
+  "filename": "Tails-Preludes-ZH-Setup-2026.11.27.exe",
+  "bytes": 14547968,
+  "size_mb": 14.5,
+  "size_mib": 13.9,
+  "sha256": "aef31f327bde9e6add571bd61803a6149441a03ce85be78eb2a8a83374243819",
+  "zip_filename": "tails-preludes-zh-full-2026.11.27.zip",
+  "zip_bytes": 14422880,
+  "zip_sha256": "09ef263f0fe0d39a345d759eca4c8fd3439ebc41e9d806b1a43d745fff91940d",
+  "installer_sha256": "aef31f327bde9e6add571bd61803a6149441a03ce85be78eb2a8a83374243819",
   "pak_hashes": {
     "zzzz_BackboneStories_ChineseFull_P.pak": "c0bf9c5011ca02fad501ef93e76450d01df89466c07b98646cba54ecc8b5af8d"
   },
@@ -12,6 +16,5 @@
   "requires_previous_chinese_patch": false,
   "installer_verified": true,
   "clean_english_install_uninstall_verified": true,
-  "runtime_fully_verified": false,
-  "size_mib": 13.7
+  "runtime_fully_verified": false
 }

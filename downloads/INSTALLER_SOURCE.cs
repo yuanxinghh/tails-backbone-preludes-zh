@@ -97,6 +97,7 @@ public class InstallerForm:Form {
     bool busy;
     protected override void OnFormClosing(FormClosingEventArgs e){if(busy)e.Cancel=true;base.OnFormClosing(e);}
     public InstallerForm(){
+        Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         Text="浣熊硬探2 · 完整汉化安装程序 | dr.Dorr";ClientSize=new Size(680,430);MinimumSize=new Size(696,469);MaximumSize=MinimumSize;StartPosition=FormStartPosition.CenterScreen;Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(244,246,250);
         var title=new Label{Text="浣熊硬探2 · 完整汉化补丁",Font=new Font(Font.FontFamily,21,FontStyle.Bold),Location=new Point(28,24),Size=new Size(620,45)};Controls.Add(title);
         var intro=new Label{Text="适用：已核验的 Steam Windows 版本 · 2026.11.27\n已包含基础汉化与后续修复。选择游戏目录即可安装，无需打开或解包 .pak。",Location=new Point(30,83),Size=new Size(620,55)};Controls.Add(intro);

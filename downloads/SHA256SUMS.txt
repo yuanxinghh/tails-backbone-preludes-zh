@@ -1,1 +1,2 @@
-2c57d7a0e6c72e39ebb3c8b01d1241fcea290375fe8c83671f20252e80877ff0  tails-preludes-zh-full-2026.11.27.zip
+aef31f327bde9e6add571bd61803a6149441a03ce85be78eb2a8a83374243819  Tails-Preludes-ZH-Setup-2026.11.27.exe
+09ef263f0fe0d39a345d759eca4c8fd3439ebc41e9d806b1a43d745fff91940d  tails-preludes-zh-full-2026.11.27.zip
