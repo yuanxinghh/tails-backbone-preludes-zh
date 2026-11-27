@@ -120,3 +120,7 @@ html{scroll-padding-top:126px}
 @keyframes heart-pop{0%,100%{transform:scale(1)}40%{transform:scale(1.3) rotate(-8deg)}70%{transform:scale(.94)}}
 @media(max-width:800px){.download-actions{gap:10px}.download-actions>.button-wide{flex-basis:100%}.love-button{margin-left:auto;min-height:49px}}
 @media(prefers-reduced-motion:reduce){.love-button,.love-button svg{transition:none;animation:none!important}}
+
+.download-actions>.button-wide{min-width:0;flex-basis:160px}
+@media(min-width:801px) and (max-width:1199px){.download-actions>.button-wide{flex-direction:column;align-items:flex-start;justify-content:center;padding:10px 14px;gap:3px;font-size:14px}}
+@media(max-width:800px){.download-actions>.button-wide{flex-basis:100%}}
