@@ -97,3 +97,7 @@ h1 .hero-first-line{color:inherit;white-space:nowrap}h1 strong{font-weight:inher
 }
 
 @media(max-width:800px){h1{font-size:clamp(32px,10vw,68px)}}
+
+/* Align the complete hero copy group closer to the left edge. */
+@media(min-width:801px){.hero-copy{width:100%;max-width:none;margin-left:0;margin-right:0;padding-left:32px;padding-right:32px}}
+@media(max-width:800px){.hero-copy{padding-left:22px;padding-right:22px}}
