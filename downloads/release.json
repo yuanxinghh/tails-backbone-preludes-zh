@@ -1,14 +1,16 @@
 {
-  "version": "2026.11.26",
-  "filename": "tails-preludes-zh-repair-2026.11.26.zip",
-  "bytes": 16463802,
-  "size_mb": 15.7,
-  "sha256": "ade883f6f95feac5a5f726fd50afcacb48f741803b34b79cd5ad978dca23458c",
+  "version": "2026.11.27",
+  "filename": "tails-preludes-zh-full-2026.11.27.zip",
+  "bytes": 14413658,
+  "size_mb": 13.7,
+  "sha256": "2c57d7a0e6c72e39ebb3c8b01d1241fcea290375fe8c83671f20252e80877ff0",
+  "installer_sha256": "e6b73eabdae3a9d069f8106acf9f57177d3cf4cbe456e4b551da57efae593592",
   "pak_hashes": {
-    "z_BackboneStories_Repair_P.pak": "8bbaa26a99275e472b47570a464a36c7e16b369cd91c57271764acb430b4514e",
-    "zz_BackboneStories_InteractionFix_P.pak": "a2a344001aa7340a62bee2fab9475bfebdf3256767e878045438d0394fee4198",
-    "zzz_BackboneStories_ConfirmText_P.pak": "45a0bdf84c6898c6194faef224dd3fc40735da516b05fbec4cee961285918caf"
+    "zzzz_BackboneStories_ChineseFull_P.pak": "c0bf9c5011ca02fad501ef93e76450d01df89466c07b98646cba54ecc8b5af8d"
   },
-  "distribution": "incremental repair for existing Chinese debug install",
+  "distribution": "self-contained full Chinese localization with GUI installer for verified Steam Windows English base",
+  "requires_previous_chinese_patch": false,
+  "installer_verified": true,
+  "clean_english_install_uninstall_verified": true,
   "runtime_fully_verified": false
 }
