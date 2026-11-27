@@ -50,3 +50,48 @@ h1 .hero-first-line{color:inherit;white-space:nowrap}h1 strong{font-weight:inher
 }
 @media(min-width:801px) and (max-width:1199px){.section{padding-top:62px;padding-bottom:62px}.section-heading{margin-bottom:32px}.update-card>p,.character-description,.steps p,.known-issues p{font-size:17px}.update-card h3{font-size:23px}}
 @media(max-width:800px){.section{padding-top:50px;padding-bottom:50px}.section-heading{margin-bottom:27px}.section-heading h2,.download-intro h2{font-size:40px}.section-heading>p,.update-card>p,.character-description,.steps p,.known-issues p{font-size:17px}.update-card h3{font-size:23px}.card-top{margin-bottom:18px}.section-note{font-size:13px}}
+
+/* Carry the larger image-led layout through every lower section. */
+.download-scene{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;margin-top:28px}
+.steps li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-content:start}
+.steps li>div{display:contents}
+.steps h3{align-self:center;margin:0}
+.steps p,.steps .step-scene{grid-column:1/-1}
+.steps .step-scene{margin-top:20px}
+.steps p{margin-top:16px}
+.verification-layout{align-items:start}
+.validation-record,.known-issues{min-width:0}
+.world-scene{display:block}
+@media(min-width:1200px){
+.character-layout{grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.character-portrait{height:540px}.character-sprite{height:450px;bottom:28px}
+.character-content h3{font-size:44px}.character-description{font-size:21px;line-height:1.85}
+.character-traits{font-size:19px}.editor-note p{font-size:19px}
+.download-section{align-items:start;gap:48px}.download-card{padding:34px}
+.download-scene{margin-top:28px}.download-intro>p:not(.eyebrow){font-size:20px}
+.download-footnote,.install-details{font-size:16px}
+.steps{gap:28px}.steps h3{font-size:27px}.steps p{font-size:20px;line-height:1.8}
+.steps .step-scene{aspect-ratio:16/10}
+.verification-layout{grid-template-columns:1fr 1fr;gap:36px}
+.known-issues{padding-left:28px}.verification h3{font-size:30px}
+.validation-record>p,.known-issues p{font-size:20px;line-height:1.8}
+.validation-record dl{gap:16px;margin:24px 0}.validation-record dd{font-size:17px}
+.world-scene{margin-top:24px;aspect-ratio:16/10}
+.feedback-inner h2{font-size:54px}.feedback-inner p:not(.eyebrow){font-size:20px}
+.copyright p{font-size:16px;line-height:1.8}.copyright h2{font-size:20px}
+.footer-brand{font-size:34px}.footer-brand span,.footer-bottom{font-size:14px}
+}
+@media(min-width:801px) and (max-width:1199px){
+.character-portrait{height:420px}.character-sprite{height:350px}
+.download-section{gap:36px;align-items:start}.steps{gap:22px}
+.steps h3{font-size:22px}.steps p,.validation-record>p{font-size:17px}
+.verification-layout{gap:30px}.copyright p{font-size:15px}
+}
+@media(max-width:800px){
+.character-portrait{height:370px}.character-sprite{height:315px}
+.character-content h3{font-size:36px}.character-traits{font-size:16px}.editor-note p{font-size:16px}
+.download-section{gap:30px}.download-scene{margin-top:22px}
+.steps{gap:32px}.steps h3{font-size:24px}.steps .step-scene{margin-top:18px}
+.verification-layout{gap:32px}.validation-record>p{font-size:17px}
+.copyright p{font-size:15px;line-height:1.8}
+}
