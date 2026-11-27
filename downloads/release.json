@@ -2,7 +2,7 @@
   "version": "2026.11.27",
   "filename": "tails-preludes-zh-full-2026.11.27.zip",
   "bytes": 14413658,
-  "size_mb": 13.7,
+  "size_mb": 14.4,
   "sha256": "2c57d7a0e6c72e39ebb3c8b01d1241fcea290375fe8c83671f20252e80877ff0",
   "installer_sha256": "e6b73eabdae3a9d069f8106acf9f57177d3cf4cbe456e4b551da57efae593592",
   "pak_hashes": {
@@ -12,5 +12,6 @@
   "requires_previous_chinese_patch": false,
   "installer_verified": true,
   "clean_english_install_uninstall_verified": true,
-  "runtime_fully_verified": false
+  "runtime_fully_verified": false,
+  "size_mib": 13.7
 }
