@@ -1,0 +1,18 @@
+'use strict';
+const characters={
+ howard:{name:'霍华德',en:'HOWARD',traits:'敏感 · 好奇 · 笨拙的冷幽默',description:'刚踏入大学的年轻人，努力与世界建立联系。让试探保持轻巧，让玩笑掩住一点尴尬；告别时，也允许他说不完整。',edit:'对拉里松弛，对未知认真。保留青涩，不提前写成老练的侦探。'},
+ clarissa:{name:'克拉丽莎',en:'CLARISSA',traits:'要强 · 敏锐 · 不肯退让',description:'从一个总在追问“为什么”的孩子，到争取掌控自己命运的继承人。锋芒之下，仍有渴望被认可的痛。',edit:'幼年保留童真，成年让短句带锋芒。面对家人时，不抹去她的脆弱。'},
+ renee:{name:'蕾妮',en:'RENEE',traits:'敏锐 · 清醒 · 重视边界',description:'看见事实，也看见关系中的权力。外在的话语可以克制，内心的自问则更锋利；决断与自我怀疑同时存在。',edit:'关怀时承认感受，论证时分清事实。尊重不同选择，不把所有分支改成冷酷决裂。'},
+ eli:{name:'伊莱',en:'ELI',traits:'求知 · 审慎 · 在信念中摇摆',description:'当研究触及未知，理性的解释也开始松动。让专业判断、迟疑和道德冲突留在话语里，保留选择带来的分歧。',edit:'以原文与玩家分支为准，让探索的热情和面对后果的顾虑各有位置。'}
+};
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+function selectCharacter(tab){const key=tab.dataset.character,c=characters[key];tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});document.querySelector('#character-en').textContent=c.en;document.querySelector('#character-name').textContent=c.name;document.querySelector('#character-traits').textContent=c.traits;document.querySelector('#character-description').textContent=c.description;document.querySelector('#character-edit').textContent=c.edit;document.querySelector('#character-panel').setAttribute('aria-labelledby',tab.id);const portrait=document.querySelector('#portrait');portrait.dataset.character=key;portrait.setAttribute('aria-label',c.name+'的官方游戏宣传形象');portrait.querySelector('.portrait-label').textContent='档案 / '+c.en;}
+tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>selectCharacter(tab));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();selectCharacter(tabs[next]);tabs[next].focus();});});
+const dialog=document.querySelector('#feedback-dialog');let opener;
+document.querySelectorAll('[data-feedback]').forEach(button=>button.addEventListener('click',()=>{opener=button;document.querySelector('#copy-status').textContent='';document.querySelector('#copy-email').textContent='复制邮箱';dialog.showModal();}));
+document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
+dialog.addEventListener('close',()=>opener?.focus());
+document.querySelector('#copy-email').addEventListener('click',async()=>{const email=document.querySelector('#feedback-email');try{await navigator.clipboard.writeText(email.value);document.querySelector('#copy-email').textContent='已复制';document.querySelector('#copy-status').textContent='邮箱已复制，可以粘贴到邮件客户端。';}catch{email.focus();email.select();document.querySelector('#copy-status').textContent='请复制已选中的邮箱地址。';}});
+const menuToggle=document.querySelector('.menu-toggle'),menu=document.querySelector('#mobile-menu');menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')!=='true';menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'收起导航':'展开导航');menu.hidden=!open;});menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu.hidden=true;menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','展开导航');}));
+fetch('downloads/release.json').then(r=>r.ok?r.json():Promise.reject()).then(r=>{document.querySelector('#download-size').textContent=r.size_mb+' MB';}).catch(()=>{});

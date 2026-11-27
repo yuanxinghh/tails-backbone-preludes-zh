@@ -1,0 +1,14 @@
+{
+  "version": "2026.11.26",
+  "filename": "tails-preludes-zh-repair-2026.11.26.zip",
+  "bytes": 16463802,
+  "size_mb": 15.7,
+  "sha256": "ade883f6f95feac5a5f726fd50afcacb48f741803b34b79cd5ad978dca23458c",
+  "pak_hashes": {
+    "z_BackboneStories_Repair_P.pak": "8bbaa26a99275e472b47570a464a36c7e16b369cd91c57271764acb430b4514e",
+    "zz_BackboneStories_InteractionFix_P.pak": "a2a344001aa7340a62bee2fab9475bfebdf3256767e878045438d0394fee4198",
+    "zzz_BackboneStories_ConfirmText_P.pak": "45a0bdf84c6898c6194faef224dd3fc40735da516b05fbec4cee961285918caf"
+  },
+  "distribution": "incremental repair for existing Chinese debug install",
+  "runtime_fully_verified": false
+}
