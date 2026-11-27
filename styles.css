@@ -25,3 +25,28 @@
 
 /* Two-line title: preserve the existing display type size. */
 h1 .hero-first-line{color:inherit;white-space:nowrap}h1 strong{font-weight:inherit}h1 .hero-connector{display:inline-block;font-size:.4em;font-weight:500;letter-spacing:0;margin-left:.18em;vertical-align:baseline}
+
+/* More generous media and type, with a tighter editorial rhythm. */
+@media(min-width:1200px){
+.section{max-width:1600px;padding:72px 48px}
+.hero-copy{width:1600px;padding-left:48px;padding-right:48px}
+.release-strip{padding-left:max(48px,calc((100vw - 1504px)/2));padding-right:max(48px,calc((100vw - 1504px)/2))}
+.section-heading{margin-bottom:34px;gap:40px}
+.section-heading h2,.download-intro h2{font-size:56px}
+.section-heading>p{font-size:19px;max-width:470px}
+.update-grid{gap:26px}.card-top{margin-bottom:22px;font-size:14px}
+.update-card h3{font-size:28px}.update-card>p{font-size:18px;min-height:96px;margin:17px 0 24px}
+.card-foot{font-size:15px;padding-top:17px}.section-note{font-size:15px;margin-top:18px}
+.character-layout{gap:56px}.character-portrait{height:460px}.character-sprite{height:380px;bottom:24px}
+.character-content h3{font-size:40px}.character-en{font-size:50px}.character-tabs button{font-size:18px}
+.character-traits{font-size:17px}.character-description{font-size:19px}.editor-note p{font-size:17px}.editor-note span{font-size:14px}
+.download-section{gap:72px}.download-intro>p:not(.eyebrow){font-size:19px}.download-card h3{font-size:36px}
+.download-compatibility,.package-list{font-size:17px}.download-card-top,.download-secondary{font-size:15px}
+.steps{gap:34px}.steps h3{font-size:24px}.steps p{font-size:18px}.step-number{font-size:34px}
+.verification-layout{gap:64px}.verification h3{font-size:28px}.validation-record dt{font-size:60px}.validation-record dd{font-size:16px}
+.validation-record>p,.known-issues p{font-size:18px}.known-label,.text-button{font-size:16px}
+.feedback-inner{padding-top:56px;padding-bottom:56px}.feedback-inner h2{font-size:48px}.feedback-inner p:not(.eyebrow){font-size:18px}
+.footer-inner{padding-top:48px;padding-bottom:28px}
+}
+@media(min-width:801px) and (max-width:1199px){.section{padding-top:62px;padding-bottom:62px}.section-heading{margin-bottom:32px}.update-card>p,.character-description,.steps p,.known-issues p{font-size:17px}.update-card h3{font-size:23px}}
+@media(max-width:800px){.section{padding-top:50px;padding-bottom:50px}.section-heading{margin-bottom:27px}.section-heading h2,.download-intro h2{font-size:40px}.section-heading>p,.update-card>p,.character-description,.steps p,.known-issues p{font-size:17px}.update-card h3{font-size:23px}.card-top{margin-bottom:18px}.section-note{font-size:13px}}
