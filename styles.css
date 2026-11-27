@@ -22,3 +22,6 @@
 .install-details summary{font-weight:700;color:var(--ink);cursor:pointer}.install-details ol{padding-left:20px}.install-details li{margin:9px 0}.install-details p{margin-top:12px}
 @media(max-width:1100px){.card-scene{width:calc(100% + 40px);margin:-23px -20px 23px}}
 @media(max-width:800px){.card-scene{width:calc(100% + 48px);margin:-24px -24px 24px}.character-sprite{height:260px;bottom:16px}.motion-toggle{right:24px}.world-scene{margin-top:20px}}
+
+/* Two-line title: preserve the existing display type size. */
+h1 .hero-first-line{color:inherit;white-space:nowrap}h1 strong{font-weight:inherit}h1 .hero-connector{display:inline-block;font-size:.4em;font-weight:500;letter-spacing:0;margin-left:.18em;vertical-align:baseline}
