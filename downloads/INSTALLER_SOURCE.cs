@@ -59,7 +59,7 @@ public static class PatchCore {
             foreach(var n in originals)File.Delete(Path.Combine(dir,n));
             File.Move(temp,target);
             if(Hash(target)!=PayloadHash)throw new Exception("安装结果校验失败。");
-            status("安装完成。直接启动游戏即可，无需解包 Pak。可再次运行本程序卸载并恢复旧补丁。");
+            status("安装完成，可以启动游戏。");
         }catch{
             if(changed){
                 if(File.Exists(target))File.Delete(target);
@@ -88,7 +88,7 @@ public static class PatchCore {
         foreach(var n in originals)File.Move(Path.Combine(restoreTemp,n),Path.Combine(dir,n));
         Directory.Delete(restoreTemp);
         File.Delete(state);foreach(var n in originals)File.Delete(Path.Combine(backup,n));Directory.Delete(backup);
-        status("卸载完成，已恢复安装前的补丁。游戏主文件与存档未修改。");
+        status("已卸载，旧补丁已恢复。");
     }
 }
 
@@ -98,17 +98,20 @@ public class InstallerForm:Form {
     protected override void OnFormClosing(FormClosingEventArgs e){if(busy)e.Cancel=true;base.OnFormClosing(e);}
     public InstallerForm(){
         Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-        Text="浣熊硬探2 · 完整汉化安装程序 | dr.Dorr";ClientSize=new Size(680,430);MinimumSize=new Size(696,469);MaximumSize=MinimumSize;StartPosition=FormStartPosition.CenterScreen;Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(244,246,250);
+        Text="浣熊硬探2 · 完整汉化安装程序 | dr.Dorr";ClientSize=new Size(680,378);MinimumSize=new Size(696,417);MaximumSize=MinimumSize;StartPosition=FormStartPosition.CenterScreen;Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(244,246,250);
         var title=new Label{Text="浣熊硬探2 · 完整汉化补丁",Font=new Font(Font.FontFamily,21,FontStyle.Bold),Location=new Point(28,24),Size=new Size(620,45)};Controls.Add(title);
-        var intro=new Label{Text="适用：已核验的 Steam Windows 版本 · 2026.11.27\n已包含基础汉化与后续修复。选择游戏目录即可安装，无需打开或解包 .pak。",Location=new Point(30,83),Size=new Size(620,55)};Controls.Add(intro);
-        var caption=new Label{Text="游戏安装目录",Location=new Point(30,152),AutoSize=true};Controls.Add(caption);
-        folder.SetBounds(30,181,510,30);folder.Text=FindGame();Controls.Add(folder);
-        browse.Text="选择目录";browse.SetBounds(552,178,100,34);browse.Click+=(s,e)=>{using(var dialog=new FolderBrowserDialog{Description="选择浣熊硬探2的安装目录",SelectedPath=folder.Text})if(dialog.ShowDialog(this)==DialogResult.OK)folder.Text=dialog.SelectedPath;};Controls.Add(browse);
-        install.Text="安装完整汉化";install.SetBounds(30,234,180,43);install.BackColor=Color.FromArgb(248,120,53);install.FlatStyle=FlatStyle.Flat;install.Click+=async(s,e)=>await Run(false);Controls.Add(install);
-        uninstall.Text="卸载并恢复";uninstall.SetBounds(224,234,160,43);uninstall.Click+=async(s,e)=>await Run(true);Controls.Add(uninstall);
-        progress.SetBounds(30,293,620,8);Controls.Add(progress);
-        status.Text="安装前请保存并退出游戏。程序会备份同名旧补丁，不修改游戏主 Pak 和存档。";status.SetBounds(30,315,620,58);Controls.Add(status);
-        var note=new Label{Text="非官方汉化交流 · 反馈：drchenjunpeng@hotmail.com\n已做资源与安装校验；全流程实机验证仍在跟进。",ForeColor=Color.FromArgb(90,100,118),Location=new Point(30,378),Size=new Size(620,45),Font=new Font(Font.FontFamily,9)};Controls.Add(note);
+        var intro=new Label{Text="Steam Windows · 2026.11.27",Location=new Point(30,83),Size=new Size(620,25)};Controls.Add(intro);
+        var caption=new Label{Text="游戏安装目录",Location=new Point(30,121),AutoSize=true};Controls.Add(caption);
+        folder.SetBounds(30,150,510,30);folder.Text=FindGame();Controls.Add(folder);
+        browse.Text="选择目录";browse.SetBounds(552,147,100,34);browse.Click+=(s,e)=>{using(var dialog=new FolderBrowserDialog{Description="选择浣熊硬探2的安装目录",SelectedPath=folder.Text})if(dialog.ShowDialog(this)==DialogResult.OK)folder.Text=dialog.SelectedPath;};Controls.Add(browse);
+        install.Text="安装汉化";install.SetBounds(30,200,180,43);install.BackColor=Color.FromArgb(248,120,53);install.FlatStyle=FlatStyle.Flat;install.Click+=async(s,e)=>await Run(false);Controls.Add(install);
+        uninstall.Text="卸载并恢复";uninstall.SetBounds(224,200,160,43);uninstall.Click+=async(s,e)=>await Run(true);Controls.Add(uninstall);
+        progress.SetBounds(30,258,620,8);Controls.Add(progress);
+        status.Text="安装前请保存并退出游戏。";status.SetBounds(30,277,620,38);Controls.Add(status);
+        const string releaseUrl="https://yuanxinghh.github.io/tails-backbone-preludes-zh/";
+        var releaseLink=new LinkLabel{Text="发布页面："+releaseUrl,Location=new Point(30,323),Size=new Size(620,23),Font=new Font(Font.FontFamily,9),LinkArea=new LinkArea(5,releaseUrl.Length)};
+        releaseLink.LinkClicked+=(s,e)=>{try{Process.Start(new ProcessStartInfo(releaseUrl){UseShellExecute=true});}catch{MessageBox.Show(this,releaseUrl,"发布页面");}};Controls.Add(releaseLink);
+        var note=new Label{Text="反馈：drchenjunpeng@hotmail.com",ForeColor=Color.FromArgb(90,100,118),Location=new Point(30,350),Size=new Size(620,22),Font=new Font(Font.FontFamily,9)};Controls.Add(note);
     }
     string FindGame(){
         var libraries=new System.Collections.Generic.List<string>();
