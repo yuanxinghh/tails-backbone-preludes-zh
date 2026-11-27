@@ -1,12 +1,19 @@
 'use strict';
 const characters={
- howard:{name:'霍华德',en:'HOWARD',traits:'敏感 · 好奇 · 笨拙的冷幽默',description:'刚踏入大学的年轻人，努力与世界建立联系。让试探保持轻巧，让玩笑掩住一点尴尬；告别时，也允许他说不完整。',edit:'对拉里松弛，对未知认真。保留青涩，不提前写成老练的侦探。'},
- clarissa:{name:'克拉丽莎',en:'CLARISSA',traits:'要强 · 敏锐 · 不肯退让',description:'从一个总在追问“为什么”的孩子，到争取掌控自己命运的继承人。锋芒之下，仍有渴望被认可的痛。',edit:'幼年保留童真，成年让短句带锋芒。面对家人时，不抹去她的脆弱。'},
- renee:{name:'蕾妮',en:'RENEE',traits:'敏锐 · 清醒 · 重视边界',description:'看见事实，也看见关系中的权力。外在的话语可以克制，内心的自问则更锋利；决断与自我怀疑同时存在。',edit:'关怀时承认感受，论证时分清事实。尊重不同选择，不把所有分支改成冷酷决裂。'},
- eli:{name:'伊莱',en:'ELI',traits:'求知 · 审慎 · 在信念中摇摆',description:'当研究触及未知，理性的解释也开始松动。让专业判断、迟疑和道德冲突留在话语里，保留选择带来的分歧。',edit:'以原文与玩家分支为准，让探索的热情和面对后果的顾虑各有位置。'}
+ howard:{name:'霍华德',en:'HOWARD',traits:'敏感 · 好奇 · 笨拙的冷幽默',description:'刚踏入大学的摄影学生，在与室友拉里的相处中学习怎样靠近别人。他敏感、好奇，也会借冷幽默掩饰尴尬；关于友谊和未来，他还没有现成的答案。',edit:'从宿舍的一次闲聊，到告别前的一段沉默，陪他走过尚未成为侦探的日子。',label:'他的故事'},
+ clarissa:{name:'克拉丽莎',en:'CLARISSA',traits:'要强 · 敏锐 · 不肯退让',description:'身为家族的继承人，她很早就认识了权威与期待。父亲的目光、家族的规矩，以及不愿退让的自尊，推着她一步步争取自己的位置。',edit:'从童年时直接的追问，到成年后锋利的回应，看看她如何在家族的阴影里寻找掌控。',label:'她的故事'},
+ renee:{name:'蕾妮',en:'RENEE',traits:'敏锐 · 清醒 · 寻找自己的位置',description:'曾经的记者，如今被日常生活包围。她依然观察、思考，也开始追问：在亲密关系和自己的抱负之间，究竟还有多少选择属于自己？',edit:'走进她的公寓，听见温柔与争执背后的犹疑，陪她重新审视自己想过的人生。',label:'她的故事'},
+ eli:{name:'伊莱',en:'ELI',traits:'求知 · 审慎 · 直面未知',description:'一名面对未知发现的科学家。当实验结果动摇原有的解释，关于进步、责任与后果的问题，也逐渐变得无法回避。',edit:'在研究现场观察、交谈与实验，面对一个问题：我们所做的一切，真的都是为了更好的未来吗？',label:'他的故事'}
 };
 const tabs=[...document.querySelectorAll('[role="tab"]')];
-function selectCharacter(tab){const key=tab.dataset.character,c=characters[key];tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});document.querySelector('#character-en').textContent=c.en;document.querySelector('#character-name').textContent=c.name;document.querySelector('#character-traits').textContent=c.traits;document.querySelector('#character-description').textContent=c.description;document.querySelector('#character-edit').textContent=c.edit;document.querySelector('#character-panel').setAttribute('aria-labelledby',tab.id);const portrait=document.querySelector('#portrait');portrait.dataset.character=key;portrait.setAttribute('aria-label',c.name+'的官方游戏宣传形象');portrait.querySelector('.portrait-label').textContent='档案 / '+c.en;}
+let currentCharacter='howard';
+const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+let animationPaused=motionPreference.matches;
+function syncMotion(){const sprite=document.querySelector('#character-sprite');sprite.src='assets/'+currentCharacter+(animationPaused?'-idle-still.png':'-idle.webp');sprite.alt=characters[currentCharacter].name+(animationPaused?'的游戏内人物形象':'的游戏内待机动画');const toggle=document.querySelector('#motion-toggle');toggle.textContent=animationPaused?'播放人物动画':'暂停人物动画';toggle.setAttribute('aria-pressed',String(animationPaused));}
+function selectCharacter(tab){const key=tab.dataset.character,c=characters[key];currentCharacter=key;tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});document.querySelector('#character-en').textContent=c.en;document.querySelector('#character-name').textContent=c.name;document.querySelector('#character-traits').textContent=c.traits;document.querySelector('#character-description').textContent=c.description;document.querySelector('#character-edit').textContent=c.edit;document.querySelector('.editor-note span').textContent=c.label;document.querySelector('#character-panel').setAttribute('aria-labelledby',tab.id);const portrait=document.querySelector('#portrait');portrait.dataset.character=key;portrait.setAttribute('aria-label',c.name+'所在的游戏场景与动态人物');portrait.querySelector('.portrait-label').textContent='人物 / '+c.en;syncMotion();}
+document.querySelector('#motion-toggle').addEventListener('click',()=>{animationPaused=!animationPaused;syncMotion();});
+motionPreference.addEventListener('change',event=>{animationPaused=event.matches;syncMotion();});
+syncMotion();
 tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>selectCharacter(tab));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();selectCharacter(tabs[next]);tabs[next].focus();});});
 const dialog=document.querySelector('#feedback-dialog');let opener;
 document.querySelectorAll('[data-feedback]').forEach(button=>button.addEventListener('click',()=>{opener=button;document.querySelector('#copy-status').textContent='';document.querySelector('#copy-email').textContent='复制邮箱';dialog.showModal();}));

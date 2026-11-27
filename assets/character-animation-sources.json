@@ -1,0 +1,45 @@
+{
+  "howard": {
+    "source": "Content/Characters/2_Howard/Howard/Frames/Howard_Dorm_front_idle_45x100.uasset",
+    "width": 450,
+    "height": 900,
+    "frame_width": 45,
+    "frame_height": 100,
+    "frames": 90,
+    "web_frame_duration_ms": 83,
+    "output": "howard-idle.webp"
+  },
+  "clarissa": {
+    "width": 615,
+    "height": 312,
+    "bytes": 767520,
+    "source": "Content/Characters/1_Clarissa/Clarissa/Frames/Idle/Clarissa_27_idle_41x104.uasset",
+    "frame_width": 41,
+    "frame_height": 104,
+    "frames": 45,
+    "web_frame_duration_ms": 83,
+    "output": "clarissa-idle.webp"
+  },
+  "renee": {
+    "width": 750,
+    "height": 285,
+    "bytes": 855000,
+    "source": "Content/Characters/3_Renee/Renee/Frames/Idle/Young_Renee_idle_50x95.uasset",
+    "frame_width": 50,
+    "frame_height": 95,
+    "frames": 45,
+    "web_frame_duration_ms": 83,
+    "output": "renee-idle.webp"
+  },
+  "eli": {
+    "width": 450,
+    "height": 945,
+    "bytes": 1701000,
+    "source": "Content/Characters/4_Scientist/Eli_Scientist/Frames/Scientist_Eli_front_idle_45x105.uasset",
+    "frame_width": 45,
+    "frame_height": 105,
+    "frames": 90,
+    "web_frame_duration_ms": 83,
+    "output": "eli-idle.webp"
+  }
+}

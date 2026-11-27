@@ -13,5 +13,17 @@
     "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_244f3535c36daac7b148a05c0c21de0e9bcb8723.1920x1080.jpg?t=1724850476",
     "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_bbf819d6e9c2b41392153918fa079d7d975f6fa6.1920x1080.jpg?t=1724850476"
   ],
-  "hero": "https://cdn.akamai.steamstatic.com/steam/apps/2020030/library_hero.jpg"
+  "hero": "https://cdn.akamai.steamstatic.com/steam/apps/2020030/library_hero.jpg",
+  "scene_files": {
+    "game-scene-1.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_64194133b542c997fb0f79b3a5a5e3edc79b54fb.1920x1080.jpg?t=1724850476",
+    "game-scene-2.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_11fafa97133f4637c52a9ad14e84cf0992e4e33c.1920x1080.jpg?t=1724850476",
+    "game-scene-3.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_8e57bdcc1128b6fb6e9121c722dc29a86d419e96.1920x1080.jpg?t=1724850476",
+    "game-scene-4.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_ee5593c91c5545bde15cb0232a7df563a7397d17.1920x1080.jpg?t=1724850476",
+    "game-scene-5.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_ed14e961f47c359f6ad135b5ef8ecd170e7a63f5.1920x1080.jpg?t=1724850476",
+    "game-scene-6.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_93cc7c107af365296b8e3c209ba83b76face2b56.1920x1080.jpg?t=1724850476",
+    "game-scene-7.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_be42e4524328024c97b596be7e8ece0bafe9dd79.1920x1080.jpg?t=1724850476",
+    "game-scene-8.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_244f3535c36daac7b148a05c0c21de0e9bcb8723.1920x1080.jpg?t=1724850476",
+    "game-scene-9.jpg": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2020030/ss_bbf819d6e9c2b41392153918fa079d7d975f6fa6.1920x1080.jpg?t=1724850476"
+  },
+  "character_animations": "assets/character-animation-sources.json (decoded from original game BGRA sprite atlases)"
 }
